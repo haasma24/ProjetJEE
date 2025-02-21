@@ -1,0 +1,175 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <title>Dashboard</title>-->
+<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
+<!--    <link rel="stylesheet" th:href="@{/css/style2.css}">-->
+<!--    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; Navigation &ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" href="#">BankApp</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--            <ul class="navbar-nav ms-auto">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link active" th:href="@{/dashboard}">Dashboard</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/cards}">Cards</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/profile}">Profile</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/operations}">Operations</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" th:href="@{/accounts}">Accounts</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link text-danger" th:href="@{/logout}">Logout</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--&lt;!&ndash; Dashboard Content &ndash;&gt;-->
+<!--<div class="container mt-4">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-3">-->
+<!--            <div class="card text-center">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Cards</h5>-->
+<!--                    <p class="card-text">Manage your credit and debit cards.</p>-->
+<!--                    <a th:href="@{/cards}" class="btn btn-primary">View</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--            <div class="card text-center">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Profile</h5>-->
+<!--                    <p class="card-text">Update your personal information.</p>-->
+<!--                    <a th:href="@{/profile}" class="btn btn-primary">Edit</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--            <div class="card text-center">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Operations</h5>-->
+<!--                    <p class="card-text">View your transaction history.</p>-->
+<!--                    <a th:href="@{/operations}" class="btn btn-primary">Details</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-md-3">-->
+<!--            <div class="card text-center">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Accounts</h5>-->
+<!--                    <p class="card-text">Manage your bank accounts.</p>-->
+<!--                    <a th:href="@{/accounts}" class="btn btn-primary">Manage</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js}"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/css/style2.css}">
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-success" href="#">BankApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" th:href="@{/dashboard}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/cards}">Cards</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/profile}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/operations}">Operations</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/accounts}">Accounts</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/credits}">Credits</a></li>
+                <form th:action="@{/logout}" method="post" onsubmit="return confirmLogout();">
+                    <button type="submit" class="nav-link text-danger" style="border: none; background: none;">Logout</button>
+                </form>
+
+                <script>
+                    function confirmLogout() {
+                        return confirm("Are you sure you want to logout?");
+                    }
+                </script>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Dashboard Content -->
+<div class="container mt-5">
+    <h2 class="text-center text-white fw-bold mb-4">Welcome to Your Dashboard</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <h5>Cards</h5>
+                <p>Manage your credit and debit cards.</p>
+                <a th:href="@{/cards}" class="button">View</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <h5>Profile</h5>
+                <p>Update your personal information.</p>
+                <a th:href="@{/profile}" class="button">Edit</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <h5>Operations</h5>
+                <p>View your transaction history.</p>
+                <a th:href="@{/operations}" class="button">Details</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <h5>Crédits</h5>
+                <p>Gérez les crédits bancaires.</p>
+                <a th:href="@{/credits}" class="button">Voir</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashboard-card">
+                <h5>Accounts</h5>
+                <p>Manage your bank accounts.</p>
+                <a th:href="@{/accounts}" class="button">Manage</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

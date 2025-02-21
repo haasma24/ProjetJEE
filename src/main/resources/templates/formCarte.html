@@ -1,0 +1,99 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Formulaire Carte</title>-->
+<!--    <link rel="stylesheet" th:href="@{/css/style2.css}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h1 th:text="${carte?.id == null ? 'Ajouter une Carte' : 'Modifier la Carte'}"></h1>-->
+<!--    <form th:action="@{/saveCarte}" th:object="${carte}" method="post">-->
+<!--        <input type="hidden" th:field="*{id}" />-->
+<!--        <label for="numero">Numéro :</label>-->
+<!--        <input type="text" th:field="*{numero}" required />-->
+<!--        <label for="type">Type :</label>-->
+<!--        <select th:field="*{type}">-->
+<!--            <option value="Débit">Débit</option>-->
+<!--            <option value="Crédit">Crédit</option>-->
+<!--        </select>-->
+<!--        <label for="compte">Compte :</label>-->
+<!--        <select th:field="*{compte.id}">-->
+<!--            <option th:each="compte : ${comptes}" th:value="${compte.id}" th:text="${compte.numero}"></option>-->
+<!--        </select>-->
+<!--        <button type="submit" class="button">Enregistrer</button>-->
+<!--        <a href="/cartes" class="button">Retour à la liste des cartes</a>-->
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulaire Carte</title>
+    <link rel="stylesheet" href="/css/css/style3.css">
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-success" href="#">BankApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" th:href="@{/dashboard}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/cards}">Cards</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/profile}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/operations}">Operations</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/accounts}">Accounts</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/credits}">Credits</a></li>
+                <form th:action="@{/logout}" method="post" onsubmit="return confirmLogout();">
+                    <button type="submit" class="nav-link text-danger" style="border: none; background: none;">Logout</button>
+                </form>
+
+                <script>
+                    function confirmLogout() {
+                        return confirm("Are you sure you want to logout?");
+                    }
+                </script>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1 th:text="${carte?.id == null ? 'Ajouter une Carte' : 'Modifier la Carte'}"></h1>
+
+    <form th:action="@{/saveCarte}" th:object="${carte}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="numero">Numéro :</label>
+            <input type="text" th:field="*{numero}" class="input-field" required />
+        </div>
+
+        <div class="form-group">
+            <label for="type">Type :</label>
+            <select th:field="*{type}" class="input-field">
+                <option value="Débit">Débit</option>
+                <option value="Crédit">Crédit</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="compte">Compte :</label>
+            <select th:field="*{compte.id}" class="input-field">
+                <option th:each="compte : ${comptes}" th:value="${compte.id}" th:text="${compte.numero}"></option>
+            </select>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="button">Enregistrer</button>
+            <a href="/cartes" class="button">Retour à la liste</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
